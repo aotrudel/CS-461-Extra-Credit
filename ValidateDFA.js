@@ -134,12 +134,20 @@ function ValidateDFA(DFA){
     let transitionsSymbols = [];
 
     Object.keys(DFA.transitions).forEach(transition => {
-        
-        if(DFA.states.includes(parseInt(transition,10)) == false){
 
-            correctTransitions = false;
+        let foundTransition = false;
+
+        for(let i = 0; i < DFA.states.length; i++){
+
+            if((DFA.states[i] == transition) == false){
+
+                foundTransition = true;
+
+            }
 
         }
+
+        correctTransitions = foundTransition;
 
         let symbols = [];
 
